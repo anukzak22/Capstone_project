@@ -1,7 +1,7 @@
 from google.cloud import bigquery
 from google.oauth2 import service_account
 from google.api_core.exceptions import NotFound
-
+import json
 # Initialize a BigQuery client
 # SERVICE_ACCOUNT_FILE = "data_fetching_copy/service_account.json"
 SERVICE_ACCOUNT_FILE = "service_account.json"
@@ -21,7 +21,10 @@ tables_to_delete = [
     "Dim_Users",
 ]
 
-dataset_id = "stackoverflow_db"
+config_path = "config.json"
+with open(config_path, 'r') as file:
+    config = json.load(file)
+dataset_id = config.get('dataset_id')
 
 # Create tables in the specified dataset
 dataset_ref = bigquery_client.dataset(dataset_id)

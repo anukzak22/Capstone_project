@@ -4,11 +4,16 @@ import sys
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 from googleapiclient.errors import HttpError
-
+import json
 SCOPES = ['https://www.googleapis.com/auth/drive']
 SERVICE_ACCOUNT_FILE = "service_account.json"
-PARENT_FOLDER_ID = "1RHpeyvWOBZ-BtjrfQ6rNVTVTC1nBAH1g"  # ID of the parent folder change if you want to save in your own folder 
+# PARENT_FOLDER_ID = "1RHpeyvWOBZ-BtjrfQ6rNVTVTC1nBAH1g" 
+config_path= "config.json"
+with open(config_path, 'r') as file:
+    config = json.load(file)
+PARENT_FOLDER_ID = config.get("PARENT_FOLDER_ID", None) # ID of the parent folder change if you want to save in your own folder 
 FOLDER_ID_FILE = "folder_id.txt"  # File to save the folder ID
+print(PARENT_FOLDER_ID)
 
 def authenticate():
     creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
