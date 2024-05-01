@@ -1,7 +1,7 @@
 from google.oauth2 import service_account
 from google.cloud import bigquery
 import sys
-
+import json
 # Set up credentials and initialize the BigQuery client
 SERVICE_ACCOUNT_FILE = "service_account.json"
 SCOPES = ['https://www.googleapis.com/auth/bigquery']
@@ -9,7 +9,10 @@ creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FI
 bigquery_client = bigquery.Client(credentials=creds)
 
 # Define the dataset and table IDs
-dataset_id = "stackoverflow_db"
+config_path = "config.json"
+with open(config_path, 'r') as file:
+    config = json.load(file)
+dataset_id = config.get('dataset_id')
 fact_post_table = "Fact_Posts"
 staging_raw_table = "staging_raw_table"
 

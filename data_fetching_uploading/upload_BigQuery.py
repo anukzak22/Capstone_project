@@ -6,6 +6,7 @@ from googleapiclient.discovery import build
 from google.api_core.exceptions import NotFound
 import io
 from google.oauth2 import service_account
+import json
 
 
 # Function to calculate the start and end dates of the week
@@ -173,8 +174,11 @@ if __name__ == "__main__":
     print(last_file_id)
 
     # Load CSV into BigQuery with the dynamically created table name
-    bigquery_dataset = "stackoverflow_db"  # BigQuery dataset
-    load_csv_to_bigquery(last_file_id, bigquery_dataset, bigquery_table_name, creds)
+    config_path = "config.json"
+    with open(config_path, 'r') as file:
+        config = json.load(file)
+    dataset_id = config.get('dataset_id')  # BigQuery dataset
+    load_csv_to_bigquery(last_file_id, dataset_id, bigquery_table_name, creds)
     column_to_convert_1 = "Post Date"
     column_to_convert_2 = "Comment Date"
     print("Uploaded the data")

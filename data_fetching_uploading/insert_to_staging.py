@@ -128,6 +128,7 @@ from google.cloud import bigquery
 from google.oauth2 import service_account
 from google.api_core.exceptions import NotFound
 from google.api_core import exceptions
+import json
 
 # Set up the BigQuery client using a service account for authentication
 SERVICE_ACCOUNT_FILE = "service_account.json"
@@ -155,7 +156,11 @@ week_start_str = start_of_week.strftime("%Y-%m-%d")
 week_end_str = end_of_week.strftime("%Y-%m-%d")
 
 # Define dataset and table references for BigQuery
-dataset_ref = bigquery.DatasetReference(bigquery_client.project, 'stackoverflow_db')
+config_path = "config.json"
+with open(config_path, 'r') as file:
+    config = json.load(file)
+dataset_id = config.get('dataset_id')
+dataset_ref = bigquery.DatasetReference(bigquery_client.project, dataset_id)
 merge_table_ref = bigquery.TableReference(dataset_ref, 'staging_raw_table')
 
 # Schema for the merge table

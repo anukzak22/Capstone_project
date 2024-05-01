@@ -55,7 +55,7 @@
 from google.oauth2 import service_account
 from google.cloud import bigquery
 import sys
-
+import json
 # Set up the BigQuery client with service account credentials
 SERVICE_ACCOUNT_FILE = "service_account.json"  # Adjust to your service account file
 SCOPES = ['https://www.googleapis.com/auth/bigquery']
@@ -65,7 +65,10 @@ bigquery_client = bigquery.Client(credentials=creds)
 # Define upload time, dataset, and table details
 default_upload_time = '2024-04-14'  # Adjust as needed
 upload_time = sys.argv[1] if len(sys.argv) > 1 else default_upload_time
-dataset_id = "stackoverflow_db"  # Adjust to your dataset
+config_path = "config.json"
+with open(config_path, 'r') as file:
+    config = json.load(file)
+dataset_id = config.get('dataset_id')  # Adjust to your dataset
 bridge_table_name = "Bridge_Posts_Tags"  # Bridge table name
 staging_table_name = "staging_raw_table"  # Staging table name
 

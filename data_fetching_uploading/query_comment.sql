@@ -34,8 +34,8 @@
     JOIN
         Users pu ON p.OwnerUserId = pu.Id -- Join to get post user details
     WHERE
-        c.CreationDate >= '2024-04-29' AND c.CreationDate < '2024-05-05'
-        AND p.CreationDate < '2024-04-29' -- Ensure post creation date is not within the specified range
+        c.CreationDate >= '2023-04-10' AND c.CreationDate < '2023-04-16'
+        AND p.CreationDate < '2023-04-10' -- Ensure post creation date is not within the specified range
         AND (p.Tags LIKE '%python%' OR
             p.Tags LIKE '%java%' OR
             p.Tags LIKE '%javascript%' OR

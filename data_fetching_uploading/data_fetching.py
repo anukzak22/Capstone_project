@@ -164,7 +164,8 @@
 
 
 import sys
-import time 
+import time
+import json 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -386,13 +387,15 @@ def execute_query(driver, query):
 def main():
     # email = "anahit_zakaryan@edu.aua.am"
     # password = "200322Anuk"
-    credential_file_path = 'credentials.txt'  # Update with your file path
+    config_path= "config.json"  # Update with your file path
 
     # Read email and password from the specified credential file
-    with open(credential_file_path, 'r') as file:
-        lines = file.readlines()
-        email = lines[0].strip()  # First line contains the email
-        password = lines[1].strip() 
+    with open(config_path, 'r') as file:
+        config = json.load(file)
+
+    # Retrieve email and password directly from the configuration
+    email = config.get("email", "")
+    password = config.get("password", "")
 
     driver = login_to_stackoverflow(email, password)
 

@@ -192,6 +192,7 @@ from google.oauth2 import service_account
 from google.cloud import bigquery
 import datetime
 import sys
+import json
 # Set up credentials and initialize the BigQuery client
 
 
@@ -205,7 +206,10 @@ default_upload_time = '2024-04-14'
 upload_time = sys.argv[1] if len(sys.argv) > 1 else default_upload_time
 
 # Define the dataset and table IDs
-dataset_id = "stackoverflow_db"
+config_path = "config.json"
+with open(config_path, 'r') as file:
+    config = json.load(file)
+dataset_id = config.get('dataset_id')
 table_name = "Dim_Users"
 
 # Merge script to avoid duplicate user_id insertions

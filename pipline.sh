@@ -22,4 +22,7 @@ echo "Running second script..."
 echo "Running third script..."
 ./scripts_3.sh "$1"
 
+echo "Running forth script..."
+./scripts_4.sh "$1"
+
 echo "All scripts have been executed."

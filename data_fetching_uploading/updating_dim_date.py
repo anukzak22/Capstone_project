@@ -1,7 +1,7 @@
 from google.oauth2 import service_account
 from google.cloud import bigquery
 import sys
-
+import json
 # Set up the BigQuery client with service account credentials
 SERVICE_ACCOUNT_FILE = "service_account.json"  # Adjust to your service account file
 SCOPES = ['https://www.googleapis.com/auth/bigquery']
@@ -9,7 +9,10 @@ creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FI
 bigquery_client = bigquery.Client(credentials=creds)
 
 # Define BigQuery project, dataset, and table details
-dataset_id = "stackoverflow_db"  # Adjust to your dataset ID
+config_path = "config.json"
+with open(config_path, 'r') as file:
+    config = json.load(file)
+dataset_id = config.get('dataset_id')  # Adjust to your dataset ID
 table_name = "Dim_Date"  # Adjust to your target table name
 default_upload_time = '2024-04-14'  # Default value for parameter
 upload_time = sys.argv[1] if len(sys.argv) > 1 else default_upload_time  # Read from command line or use default
