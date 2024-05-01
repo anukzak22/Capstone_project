@@ -42,7 +42,7 @@ while true; do
     # source googledrive/bin/activate || continue
 
     # Execute the Python script to create a Google Drive folder with the provided date
-    python3 google_folder_creation.py "$1" || continue
+    python3 creating_google_folder.py "$1" || continue
     echo "Created new folder"
     
     # python3 data_proc.py || continue
