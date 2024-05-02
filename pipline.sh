@@ -7,6 +7,26 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
+# Validate the date format
+if ! [[ $1 =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+    echo "Invalid date format. Please provide the date in YYYY-MM-DD format."
+    exit 1
+fi
+
+# Check if the date is valid using Python
+python3 -c "
+from datetime import datetime
+import sys
+try:
+    datetime.strptime(sys.argv[1], '%Y-%m-%d')
+except ValueError:
+    sys.exit(1)
+" "$1"
+
+if [ $? -ne 0 ]; then
+    echo "Invalid date. The provided date does not seem to be a real date."
+    exit 1
+fi
 # Run first bash script with the provided date argument
 echo "Running first script with date argument: $1"
 ./scripts_1.sh "$1"

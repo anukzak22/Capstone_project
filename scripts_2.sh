@@ -1,15 +1,4 @@
 #!/bin/bash
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <date>"
-    echo "Please specify a date in YYYY-MM-DD format."
-    exit 1
-fi
-
-# Validate the date format
-if ! [[ $1 =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
-    echo "Invalid date format. Please provide the date in YYYY-MM-DD format."
-    exit 1
-fi
 # Set the directory where Python scripts are located
 SCRIPT_DIR="$(dirname "$0")/data_fetching_uploading"
 
@@ -34,7 +23,7 @@ while true; do
     fi
 
     # Execute the Python script to fetch data for query_comment.sql
-    python3 data_fetching.py query_comment.sql || continue
+    python3 fetching_data.py query_comment.sql || continue
     echo "Second file is saved in downloads"
     sleep 5  # Add a sleep time of 5 seconds
 
