@@ -23,6 +23,6 @@
 4. The script requires specific login credentials, ensure that these are stored securely and in a file named `credentials.txt`.
 
 ## 4. Alternative Method to Access Google Drive Files
-1. You can download the `service_account.json`,`credentials.txt`, `folder_id.txt`, and `file_id.txt` from Google Drive manually by navigating to Credential files.( https://drive.google.com/drive/folders/1cv7UeKxDqznBOiPUs_AiUFERhCKfAhyR?usp=sharing)
+1. You can download the `service_account.json`,`config.json` from Google Drive manually by navigating to Credential files.( https://drive.google.com/drive/folders/1cv7UeKxDqznBOiPUs_AiUFERhCKfAhyR?usp=sharing)
 2. After downloading, ensure that these files are in the correct directory for the project to access them. This is typically the same directory where the Python and SQL scripts are located, like:
    - `data_fetching_uploading/`
