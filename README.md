@@ -95,33 +95,6 @@ To use Google Cloud Platform (GCP) services like BigQuery and Google Drive progr
    - "BigQuery Job User"
 6. Click "Save."
 
-## Step 4: Run the Pipeline
-With everything set up, you can now run the pipeline.
-
-### 4.1 Ensure Configuration Files Are in Place
-1. Make sure you have a configuration file with the correct details (as outlined in Step 2).
-2. Ensure that `service_account.json` and the `config.json` are in the correct location `data_fetching_uploading` folder .
-
-### 4.2 Execute the Pipeline
-1. Use your preferred method (such as a Python script, terminal, or Colab notebook) to run the pipeline.
-2. Ensure that the pipeline executes without errors and completes all the steps.
-
-### 4.3 Perform Final Checks
-1. Confirm that data has been downloaded and saved to Google Drive.
-2. Verify that the BigQuery tables have been created and populated correctly.
-3. Check any logging or output for errors or issues.
-
-## Troubleshooting
-If you encounter any issues, consider the following:
-- **Configuration Errors**:
-  - Ensure all configuration values are correct, including folder IDs, dataset IDs, and credentials.
-- **Permission Errors**:
-  - Confirm that the service account has appropriate permissions and access to Google Drive and BigQuery.
-- **Missing Dependencies**:
-  - Check that all necessary software, libraries, and dependencies are installed and configured correctly.
-- **Review Error Messages**:
-  - Examine any error messages for clues about the source of the problem.
-
 
 ### Alternative: Use Pre-configured Credentials
 If the above steps do not resolve the issue, you can use pre-configured credentials:
@@ -130,13 +103,69 @@ If the above steps do not resolve the issue, you can use pre-configured credenti
 3. Add these files to the correct directory (usually the `data_fetching_uploading` folder).
 4. Re-run the pipeline with these credentials.
 
+
+## Step 4: Initialize the Environment for the Pipeline
+
+To ensure the pipeline runs in a consistent environment with all required dependencies, you should create and set up a Python virtual environment. This step includes creating the environment, installing necessary packages from `requirements.txt`, and activating it before running the pipeline.
+
+### 4.1 Create a Virtual Environment
+1. Open a terminal and navigate (`cd`) to the project directory where your pipeline scripts and `requirements.txt` are located.
+   ```bash
+   cd <path of the folder wher the git files are located>
+
+   ```
+2. Create a virtual environment using `venv`. This example creates an environment named `env`:
+   ```bash
+   python3 -m venv env
+   ```
+### 4.2 Activate the Virtual Environment
+After creating the virtual environment, you need to activate it to use it for installing packages and running the pipeline.
+
+- **In terminal**:
+  1. Open a terminal and navigate (`cd`) to the project directory where your virtual environment (`env`) is located.
+  2. Activate the virtual environment with the following command:
+     ```bash
+     source env/bin/activate
+     ```
+  3. Once activated, you should see the environment name in your terminal prompt (usually `env`).
+After activating the virtual environment, you can proceed with installing the required packages (Step 4.3) and then run the pipeline. Remember to always activate the virtual environment before executing scripts or installing packages to ensure a consistent environment.
+
+### 4.3 Install Required Packages
+After activating the virtual environment, install the required packages from `requirements.txt`.
+
+1. Ensure the virtual environment is activated (you should see the environment's name in your terminal prompt).
+2. Install the packages listed in `requirements.txt`:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### 4.4 Verify Installation
+After installing the required packages from `requirements.txt`, it's important to verify that everything installed correctly to avoid issues when running the pipeline.
+
+1. To list all installed packages in the virtual environment, use the following command:
+   ```bash
+   pip list
+   ```
+2. Check that all packages specified in requirements.txt are listed and installed without errors.
+
+Once you confirm that all packages are installed correctly, you can proceed with running the pipeline.
+
+3. Run this command to deactivte the environment and the whole session 
+   ```bash
+   deactivate
+   ```
+
 ## Step 5: Run the Pipeline
 
 To run the pipeline, you need to execute a series of bash scripts in a specific sequence. It's recommended to run `script_0.sh` first, followed by `pipeline.sh`. Below is the step-by-step process for running the pipeline.
 
 ### 5.1 Run `script_0.sh`
 1. Open a terminal and navigate (`cd`) to the directory where the bash scripts are located.
-2. Run the `script_0.sh` script to initialize the database and create the necessary dimensional and fact tables based on the `config.json` file's `dataset_id`:
+2. Activate the initalized environment 
+   ```bash
+   source env/bin/activate
+   ```
+3. Run the `script_0.sh` script to initialize the database and create the necessary dimensional and fact tables based on the `config.json` file's `dataset_id`:
    ```bash
    ./script_0.sh
    ```
@@ -185,3 +214,4 @@ If any problems occur during or after running `pipeline.sh`:
   - Check the `config_json` and `service_account.json` files for correctness and completeness.
 - **Look for Errors**:
   - If the pipeline fails, inspect the error messages to identify the cause. Common issues include incorrect folder IDs,directory issues or permission problem.
+
