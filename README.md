@@ -3,7 +3,7 @@
 This guide outlines the steps to set up and run the pipeline. Follow these instructions to ensure proper configuration and execution.
 
 ## Prerequisites
-- Google Drive account
+- Google account
 - Google Cloud Platform (GCP) account
 - Stack overflow acount
 - Selenium installed and configured
@@ -93,11 +93,12 @@ To use Google Cloud Platform (GCP) services like BigQuery and Google Drive progr
 5. Add the service account email and assign the following roles:
    - "BigQuery Admin"
    - "BigQuery Job User"
+   - "Owner"
 6. Click "Save."
 
 
 ### Alternative: Use Pre-configured Credentials
-If the above steps do not resolve the issue, you can use pre-configured credentials:
+You can also use pre-configured credentials:
 1. Go to the following link on Google Drive: [Download Credentials Link](#).
 2. Download the `config_json` file and `service_account.json`.
 3. Add these files to the correct directory (usually the `data_fetching_uploading` folder).
@@ -120,7 +121,6 @@ To ensure the pipeline runs in a consistent environment with all required depend
    ```
 ### 4.2 Activate the Virtual Environment
 After creating the virtual environment, you need to activate it to use it for installing packages and running the pipeline.
-
 - **In terminal**:
   1. Open a terminal and navigate (`cd`) to the project directory where your virtual environment (`env`) is located.
   2. Activate the virtual environment with the following command:
@@ -132,7 +132,6 @@ After activating the virtual environment, you can proceed with installing the re
 
 ### 4.3 Install Required Packages
 After activating the virtual environment, install the required packages from `requirements.txt`.
-
 1. Ensure the virtual environment is activated (you should see the environment's name in your terminal prompt).
 2. Install the packages listed in `requirements.txt`:
    ```bash
@@ -141,15 +140,12 @@ After activating the virtual environment, install the required packages from `re
 
 ### 4.4 Verify Installation
 After installing the required packages from `requirements.txt`, it's important to verify that everything installed correctly to avoid issues when running the pipeline.
-
 1. To list all installed packages in the virtual environment, use the following command:
    ```bash
    pip list
    ```
 2. Check that all packages specified in requirements.txt are listed and installed without errors.
-
 Once you confirm that all packages are installed correctly, you can proceed with running the pipeline.
-
 3. Run this command to deactivte the environment and the whole session 
    ```bash
    deactivate
@@ -173,7 +169,11 @@ To run the pipeline, you need to execute a series of bash scripts in a specific 
 After initializing the database with `script_0.sh`, you can run the main pipeline script, `pipeline.sh`, to fetch the week's data and perform the rest of the pipeline operations. This script takes a date argument representing a Sunday date to fetch the data for the corresponding week.
 
 1. Ensure you are in the correct directory where the bash files are located.
-2. Run `pipeline.sh` with a specific Sunday date as an argument(to contain whole weeks data):
+2. Activate the environment by :
+   ```bash
+   source env/bin/activate
+   ```
+3. Run `pipeline.sh` with a specific Sunday date as an argument(to contain whole weeks data):
    ```bash
    ./pipeline.sh <date argument>
    ```
@@ -215,3 +215,26 @@ If any problems occur during or after running `pipeline.sh`:
 - **Look for Errors**:
   - If the pipeline fails, inspect the error messages to identify the cause. Common issues include incorrect folder IDs,directory issues or permission problem.
 
+
+## 6. Running Sentiment and Similarity Analysis
+
+To run the sentiment and similarity analysis, you need to update the file path to your data and execute the analysis script. Follow one of these two options:
+
+### 6.1 Option 1: Update File Path for Existing Data
+1. Open the script or configuration file where the file path is set.
+2. Find the line that defines the file path and the dataframe and chaneg the path:
+   ```python
+   file_path = '/content/drive/My Drive/initial_folder_name/view_tables/view_comments_2024-04-07.csv'
+   ```
+   Change "initial_folder_name" to your correct folder name in Google Drive.
+
+### 6.1 Option 2: Download New Data from Google Drive
+
+1. Open the following Google Drive link in your browser:
+2. Navigate to the week for which you want to analyze sentiment and similarity.
+3. Download the appropriate data file(s) to your local machine and upload to your Drive.
+4. Update the file path in your script or configuration to point to the sentimented resulst data.
+
+### 6.2 Upload the notebooks to google colab
+1. Open the notebooks in the google colab and run the commetns_sentiments notebook for desired week. 
+2. Save the changes, then re-run the script to analyze the sentiment and similarity. This will generate updated plots and results.
