@@ -11,7 +11,7 @@ SERVICE_ACCOUNT_FILE = "service_account.json"
 config_path= "config.json"
 with open(config_path, 'r') as file:
     config = json.load(file)
-PARENT_FOLDER_ID = config.get("PARENT_FOLDER_ID", None) # ID of the parent folder change if you want to save in your own folder 
+PARENT_FOLDER_ID = config.get("raw_table_id", None) # ID of the parent folder change if you want to save in your own folder 
 FOLDER_ID_FILE = "folder_id.txt"  # File to save the folder ID
 print(PARENT_FOLDER_ID)
 
