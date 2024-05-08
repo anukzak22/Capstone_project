@@ -34,7 +34,7 @@
     LEFT JOIN
         Users cu ON c.UserId = cu.Id
     WHERE
-        p.CreationDate >= '2024-04-08' AND p.CreationDate < '2024-04-14'
+        p.CreationDate >= '2024-04-22' AND p.CreationDate < '2024-04-28'
     AND (p.Tags LIKE '%python%' OR
                 p.Tags LIKE '%java%' OR
                 p.Tags LIKE '%javascript%' OR
