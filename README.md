@@ -24,7 +24,7 @@ This guide outlines the steps to set up and run the pipeline. Follow these instr
    - Note the folder IDs for `raw_table` and `view_table`.
 
 ## Step 2: Create the Configuration File
-Create a JSON configuration file with the following information and save it into the `data_fetching_uploading` folder:
+Create a JSON configuration file named `config.json` with the following information and save it into the `data_fetching_uploading` folder:
 - **Google Drive Information**:
   - Raw_table ID for `raw_table`: `"raw_table_id": "YOUR_PARENT_FOLDER_ID"`
   - Folder ID for `view_table`: `"view_folder_id": "YOUR_VIEW_FOLDER_ID"`
