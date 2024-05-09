@@ -8,7 +8,7 @@ This guide outlines the steps to set up and run the pipeline. Follow these instr
 - Stack overflow acount
 - Selenium installed and configured
 - A Safari web browser for Selenium
-- Reuqirments.txt packages 
+- Installed Reuqirments.txt packages 
 
 ## Step 1: Set Up Google Drive Folders
 1. **Create a Parent Folder**:
