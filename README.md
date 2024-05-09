@@ -96,6 +96,14 @@ To use Google Cloud Platform (GCP) services like BigQuery and Google Drive progr
    - "Owner"
 6. Click "Save."
 
+### 3.6 Enable Api's in Google Cloud 
+- Go to the Google Cloud account and click on the APIs & Services, then go to the Enabled APIs and Services and click on the + sign Enable APIs and Sevices and enable this list of APIs 
+1. BigQuery API
+2. Google Drive API
+3. Cloud Dataplex API
+4. Dataform API
+
+
 
 ### Alternative: Use Pre-configured Credentials
 You can also use pre-configured credentials:
