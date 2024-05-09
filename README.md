@@ -121,7 +121,7 @@ To ensure the pipeline runs in a consistent environment with all required depend
 ### 4.1 Create a Virtual Environment
 1. Open a terminal and navigate (`cd`) to the project directory where your pipeline scripts and `requirements.txt` are located.
    ```bash
-   cd <path of the folder wher the git files are located>
+   cd <path of the downloaded git Folder>
 
    ```
 2. Create a virtual environment using `venv`. This example creates an environment named `env`:
