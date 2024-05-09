@@ -173,6 +173,10 @@ To run the pipeline, you need to execute a series of bash scripts in a specific 
    ```bash
    ./script_0.sh
    ```
+4. Deactivate the environment after finishing execution of the first bash script by:
+   ```bash
+   deactivate
+   ```
 ### 5.2 Run `pipeline.sh`
 After initializing the database with `script_0.sh`, you can run the main pipeline script, `pipeline.sh`, to fetch the week's data and perform the rest of the pipeline operations. This script takes a date argument representing a Sunday date to fetch the data for the corresponding week.
 
@@ -243,6 +247,8 @@ To run the sentiment and similarity analysis, you need to update the file path t
 3. Download the appropriate data file(s) to your local machine and upload to your Drive.
 4. Update the file path in your script or configuration to point to the sentimented resulst data.
 
-### 6.2 Upload the notebooks to google colab
+### 6.2 Upload the notebooks to google colab, Download the Power BI Dashboard 
 1. Open the notebooks in the google colab and run the commetns_sentiments notebook for desired week. 
-2. Save the changes, then re-run the script to analyze the sentiment and similarity. This will generate updated plots and results.
+2. Save the changes, then re-run the script to analyze the sentiment and similarity. This will generate updated plots and results. 
+3. Go to the following link in Google drive [Google drive folder](https://drive.google.com/drive/u/1/folders/1cv7UeKxDqznBOiPUs_AiUFERhCKfAhyR)
+4. Download the Power BI dashboard and see the results. 
