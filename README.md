@@ -110,7 +110,8 @@ You can also use pre-configured credentials:
 1. Go to the following link on Google Drive: [Download Credentials Link](https://drive.google.com/drive/u/1/folders/1cv7UeKxDqznBOiPUs_AiUFERhCKfAhyR).
 2. Download the `config_json` file and `service_account.json`.
 3. Add these files to the correct directory (`data_fetching_uploading` folder).
-4. Re-run the pipeline with these credentials.
+4. Change the dataset_id to the desired name to create new Database.
+5. Re-run the pipeline with these credentials.
 
 
 ## Step 4: Initialize the Environment for the Pipeline
