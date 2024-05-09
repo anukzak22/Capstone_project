@@ -107,7 +107,7 @@ To use Google Cloud Platform (GCP) services like BigQuery and Google Drive progr
 
 ### Alternative: Use Pre-configured Credentials
 You can also use pre-configured credentials:
-1. Go to the following link on Google Drive: [Download Credentials Link](#).
+1. Go to the following link on Google Drive: [Download Credentials Link](https://drive.google.com/drive/u/1/folders/1cv7UeKxDqznBOiPUs_AiUFERhCKfAhyR).
 2. Download the `config_json` file and `service_account.json`.
 3. Add these files to the correct directory (usually the `data_fetching_uploading` folder).
 4. Re-run the pipeline with these credentials.
