@@ -75,7 +75,7 @@ To use Google Cloud Platform (GCP) services like BigQuery and Google Drive progr
 11. Download the key and save it as `service_account.json`.
 
 ### 3.3 Save Service Account and Config File
-1. After downloading the `service_account.json`, save it in the appropriate folder (usually the `data-fetching-uploading` folder).
+1. After downloading the `service_account.json`, save it in the appropriate folder (`data-fetching-uploading` folder).
 2. Ensure the configuration file (as described in Step 2) is in the same folder.v
 
 ### 3.4 Share Google Drive Folder with the Service Account
